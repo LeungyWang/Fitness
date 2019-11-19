@@ -49,7 +49,7 @@ table {
 
 body {
     font-family:  Microsoft YaHei, Arial, "\5b8b\4f53";
-    background:#0064C8;
+    background:#B0C4DE;
 }
 
 .clearfix:before, .clearfix:after {
@@ -83,7 +83,7 @@ h1, h2, h3, h4, h5, h6 {
     margin-left: -500px;
     margin-top: -250px;
 	
-	background:#0064C8;
+	background:#B0C4DE;
 }
 .login>.login_title{
     height: 80px;
@@ -102,7 +102,7 @@ h1, h2, h3, h4, h5, h6 {
 	margin-top:20px;
 }
 .login>.login_main>.main_left{
-    height: 320px;
+    height: 380px;
     width: 650px;
     float: left;
     -moz-border-top-left-radius: 10px;
@@ -113,10 +113,10 @@ h1, h2, h3, h4, h5, h6 {
     -webkit-border-bottom-left-radius: 10px;
     border-bottom-left-radius: 10px;
 
-    background: url("../images/login_left.png") no-repeat;
+    background: url("../img/gymphoto.png") no-repeat;
 }
 .login>.login_main>.main_right{
-    height: 320px;
+    height:380px;
     width: 350px;
     float: right;
     background-color: #e9eef2;
@@ -134,7 +134,7 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
     text-align: center;
     line-height: 60px;
-    background: url("../images/border_img.png") repeat;
+    background: url("../img/border_img.png") repeat;
     margin-bottom: 25px;
 }
 .login>.login_main>.main_right>form>div{
@@ -178,7 +178,7 @@ h1, h2, h3, h4, h5, h6 {
     height: 35px;
     line-height: 35px;
     text-align: center;
-    background-color: #0064c8;
+    background-color: #008080;
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
     border-radius: 3px;
