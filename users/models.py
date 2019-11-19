@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 
-class User(models.Model):
+class New_User(models.Model):
 
 	vip_id = models.AutoField(primary_key=True)
 
