@@ -4,3 +4,8 @@ from django.http import HttpResponse
 
 def user_regist(requset):
 	return HttpResponse("Hello World")
+
+
+
+def user_login(requset):
+	return render(requset,'users/login.html')
