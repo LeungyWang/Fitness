@@ -9,3 +9,6 @@ def user_regist(requset):
 
 def user_login(requset):
 	return render(requset,'users/login.html')
+
+def user_main(requset):
+	return render(requset,'users/index.html')
