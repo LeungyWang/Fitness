@@ -1,25 +1,38 @@
-{% load staticfiles %}
-<!DOCTYPE html>
+{% load staticfiles%}
+<meta http-equiv='Content-type' content='text/htm'>
 <html>
 
 	<head>
 		<meta charset="utf-8" />
 		<title>首页</title>
-		<link rel="stylesheet" href="{% static 'css/page.css' %}" />
+		<link rel="stylesheet" href="{% static 'css/page1.css' %}" />
 		<script type="text/javascript" src="{% static 'js/jquery.min.js' %}" ></script>
 		<script type="text/javascript" src="{% static 'js/index.js' %}" ></script>
+
 	</head>
 
 	<body>
 		<div class="left">
-			<div class="bigTitle">HighFit管理系统</div>
-			<div class="lines">
-				<div onclick="pageClick(this)" class="active"><img src="{% static 'img/icon-1.png' %}" />业务人员管理</div>
-				<div onclick="pageClick(this)"><img src="{% static 'img/icon-2.png' %}" />代理商品管理</div>
-				<div onclick="pageClick(this)"><img src="{% static 'img/icon-3.png' %}" />个人信息管理</div>
-				<div onclick="pageClick(this)"><img src="{% static 'img/icon-4.png' %}" />收货地址管理</div>
-				<div onclick="pageClick(this)"><img src="{% static 'img/icon-5.png' %}" />在售门店管理</div>
-			</div>
+			<div class="header">HighFit</div>
+        <div class="nav">
+            <ul>
+                <li class="list">					
+                    <h2><i></i>用户选课</h2>
+                    <div class="hide">
+                        <h5>选择课程</h5>
+                        <h5>查看课表</h5>                   
+                    </div>
+                </li>
+                <li class="list">
+                    <h2><i></i>推荐课程</h2>
+                    <div class="hide">
+                        <h5>个人健康情况评估</h5>
+                        <h5>健康指数查询</h5>
+                        <h5>查询推荐课程</h5>
+                    </div>
+                </li>
+            </ul>
+        </div>
 		</div>
 		<div class="top">
 			<div class="leftTiyle" id="flTitle">业务人员管理</div>
@@ -32,5 +45,38 @@
 </div>
 		
 	</body>
-
+	<script>
+		(function () {
+			var oList = document.querySelectorAll('.list h2'),
+				oHide = document.querySelectorAll('.hide'),
+				oIcon = document.querySelectorAll('.list i'),
+				lastIndex = 0;
+			for(var i=0;i<oList.length;i++){
+				oList[i].index = i;//自定义属性
+				oList[i].isClick = false;
+				oList[i].initHeight = oHide[i].clientHeight;
+				oHide[i].style.height = '0';
+				oList[i].onclick = function () {
+					if(this.isClick){
+						oHide[this.index].style.height = '0';
+						oIcon[this.index].className = '';
+						oList[this.index].className = '';
+						oList[this.index].isClick = false;
+					}
+					else{
+						oHide[lastIndex].style.height = '0';
+						oIcon[lastIndex].className = '';
+						oList[lastIndex].className = '';
+						oHide[this.index].style.height = '110px';
+						oIcon[this.index].className = 'on';
+						oList[this.index].className = 'on';
+						oList[lastIndex].isClick = false;
+						oList[this.index].isClick = true;
+						lastIndex = this.index;
+					}
+				}
+			}
+		})();
+		</script>
+  
 </html>
