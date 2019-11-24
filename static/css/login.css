@@ -172,7 +172,7 @@ h1, h2, h3, h4, h5, h6 {
 .login>.login_main>.main_right>form input:focus{
     border: 1px solid #999;
 }
-.login>.login_main>.main_right>form>.yes_login>a{
+.login>.login_main>.main_right>form>.yes_login>input{
     display: block;
     width: 250px;
     height: 35px;
@@ -186,7 +186,7 @@ h1, h2, h3, h4, h5, h6 {
     text-decoration: none;
     margin-left: 50px;
 }
-.login>.login_main>.main_right>form>.yes_login>a:hover{
+.login>.login_main>.main_right>form>.yes_login>input:hover{
     background-color: #0058af;
 }
 .login>.login_footer{

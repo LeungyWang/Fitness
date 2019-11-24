@@ -22,5 +22,7 @@ class New_User(models.Model):
 
 	vip_level = models.IntegerField()
 
+	vip_password = models.CharField(max_length=256,default="123456")
+
 	class Meta:
 		ordering = ('-vip_id',)
