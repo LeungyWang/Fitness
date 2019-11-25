@@ -19,4 +19,5 @@ from django.urls import path,include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('account/',include('users.urls',namespace='users')),
+    path('choice/',include('ly_app.urls',namespace='ly_app'))
 ]
