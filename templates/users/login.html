@@ -23,7 +23,7 @@
                 </div>
                 <div class="password">
                     <img src="{% static 'img/password.png' %}" alt="">
-                    <input type="text" placeholder="请输入密码" name="password">
+                    <input type="password" placeholder="请输入密码" name="password">
                 </div>
                 <div class=""><input type="radio" name="usertype" style=" height: 15px;width: 15px; margin-bottom: 0px;"/>&nbsp;&nbsp;用户<!--name一样--></input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <input type="radio" name="usertype" style=" height: 15px;width: 15px; margin-bottom: 0px;"/>&nbsp;&nbsp;管理员<!--name一样--></input>
@@ -32,6 +32,13 @@
                 <div class="yes_login"><input type="submit" value="登     录" style="background-color: #0058af; color:white;padding-right:40px"></input></div>
                 </br>
             </form>
+{% if messages %}
+<script>
+        {% for msg in messages %}
+            alert('{{ msg.message }}');
+        {% endfor %}
+    </script>
+{% endif %}
 
         </div>
     </div>
