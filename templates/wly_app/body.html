@@ -1,0 +1,53 @@
+{% load staticfiles %}
+<meta http-equiv='Content-type' content='text/htm'>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/page1.css' %}" />
+
+    <title>个人健身规划</title>
+</head>
+<body bgcolor="#F7F7F7">
+<form method="POST" class="basic-grey">
+{% csrf_token %}
+    <H1>个人健身规划填写</H1>
+    <span>身高(cm)：</span>
+    <div class="inputbox">
+    {{ form.hight}}
+        </div>
+    <span>体重(cm)：</span>
+     <div class="inputbox">
+    {{ form.height}}
+
+    </div>
+    <span>胸围(cm)：</span>
+    <div class="inputbox">
+    {{ form.chest}}
+    </div>
+    <span>腰围(cm)：</span>
+    <div class="inputbox">
+   {{ form.waist}}
+    </div>
+    <span>臀围(cm)：</span>
+    <div class="inputbox">
+     {{ form.hip}}
+
+    </div>
+    <H1></H1>
+    <span>静息心率(bpm)：</span>
+    <div class="inputbox">
+     {{ form.queith}}
+
+    </div>
+    <span>最大心率(bpm)：</span>
+    <div class="inputbox">
+    {{ form.maxh}}
+    </div>
+    <H1></H1>
+    <input type="submit" value="保存" class="button">
+    <H1></H1>
+
+</form>
+
+</body>
+</html>

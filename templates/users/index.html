@@ -19,7 +19,7 @@
                 <li class="list">					
                     <h2><i></i>用户选课</h2>
                     <div class="hide">
-                        <h5> <a href="http://localhost:8000/choice/test/" target="test">选择课程</a></h5>
+                        <h5> <a href="/choice/test/" target="test">选择课程</a></h5>
                         <h5><a href="http://www.baidu.com" target="test">查看课表</a></h5>
                         <h5>das</h5>                   
                     </div>
@@ -27,17 +27,18 @@
                 <li class="list">
                     <h2><i></i>推荐课程</h2>
                     <div class="hide">
-                        <h5>个人健康情况评估</h5>
-                        <h5>健康指数查询</h5>
-                        <h5>查询推荐课程</h5>
+						<h5><a href="/command/body" target="test">个人健身规划</a></h5>
+						<h5><a href="#" target="">体能测试</a></h5>
+						<h5><a href="#" target="">体侧报告</a></h5>
+                        <h5><a href="#" target="">推荐课程</a></h5>
                     </div>
                 </li>
             </ul>
         </div>
 		</div>
 		<div class="top">
-			<div class="leftTiyle" id="flTitle">业务人员管理</div>
-			<div class="thisUser">当前用户：小UU</div>
+			<div class="leftTiyle" id="flTitle">健身房管理系统</div>
+			<div class="thisUser">当前用户：{{request.session.user_name}}</div>
 		</div>
 		<div class="content">
 			<iframe frameborder=0 name="test"
@@ -72,7 +73,7 @@
 						oHide[lastIndex].style.height = '0';
 						oIcon[lastIndex].className = '';
 						oList[lastIndex].className = '';
-						oHide[this.index].style.height = '110px';
+						oHide[this.index].style.height = '150px';
 						oIcon[this.index].className = 'on';
 						oList[this.index].className = 'on';
 						oList[lastIndex].isClick = false;

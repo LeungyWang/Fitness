@@ -38,3 +38,8 @@ class New_User(models.Model):
 
 	class Meta:
 		ordering = ('-vip_id',)
+
+
+
+
+

@@ -22,6 +22,8 @@ def user_login(request):
 					messages.error(request, '用户不存在！')
 					return redirect("/account/index")
 				if user.user_password == password:
+					request.session['is_login']=True
+					request.session['user_name']=username
 					return render(request,'users/index.html')
 				else:
 					messages.error(request, '密码错误！')
@@ -36,6 +38,8 @@ def user_login(request):
 					messages.error(request, '密码错误！')
 					return redirect("/account/index/")
 				else:
+					request.session['is_login'] = True
+					request.session['user_name'] = username
 					return render(request,'users/index.html')
 			else:
 				raise Exception
