@@ -17,8 +17,9 @@ def body_check(request):
             hip = form.cleaned_data["hip"]
             queith = form.cleaned_data["queith"]
             maxh = form.cleaned_data["maxh"]
-            return JsonResponse(form.clean_data)
+
         else:
-            errors_msg = form.errors
-            return render(request, "wly_app/body.html", {'form': BodyCheckForm, 'errors': errors_msg})
+            error_msg =form.errors
+            return render(request,"wly_app/body.html",{'form':form,"errors":error_msg})
+
     return render(request,"wly_app/body.html",{'form':BodyCheckForm})
