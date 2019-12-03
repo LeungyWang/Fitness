@@ -1,1 +1,32 @@
-nb
+{% load staticfiles %}
+<meta http-equiv='Content-type' content='text/htm'>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/page1.css' %}" />
+
+    <title>选择健身课程</title>
+</head>
+<body >
+	<div class="basic-grey" >
+		<h1>欢迎选择健身课程</h1>
+		<table >
+			<tr>
+				<th>课程代号</th>
+				<th>课程名称</th>
+				<th>课程时长（分钟）</th>
+				<th>已选人数</th>
+				<th></th>
+			</tr>
+			{% for c in course_list %}　　
+                        <tr>
+                            <td>{{ c.courseid }}</td>
+                            <td>{{ c.name }}</td>
+                            <td>{{ c.tuition }}</td>
+                            <td>0</td>
+                            <td><button value="{{c.courseid }} " class="button">选择</button></td>
+                        </tr>
+            {% endfor %}
+		</table>
+</body>
+</html>
