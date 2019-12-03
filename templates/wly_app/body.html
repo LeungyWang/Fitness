@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{% static 'css/page1.css' %}" />
 
-    <title>我的身体数据</title>
+    <title>我的身体数据{{requst.session.user_name}}</title>
 </head>
 <body bgcolor="#F7F7F7">
 <form method="post" action="/command/body/" class="basic-grey">
@@ -17,7 +17,7 @@
     </div>
     {{ errors.hight}}
     <br>
-    <span>体重(cm)：</span>
+    <span>体重(kg)：</span>
      <div class="inputbox">
     {{ form.height}}
     </div>
@@ -47,6 +47,8 @@
      {{ form.queith}}
     </div>
     {{ errors.queith}}
+        <br><br>
+
     <span>最大心率(bpm)：</span>
     <div class="inputbox">
     {{ form.maxh}}
