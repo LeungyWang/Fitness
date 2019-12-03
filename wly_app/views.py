@@ -8,12 +8,10 @@ from django.contrib import messages
 # Create your views here.
 
 def body_check(request):
+    username = request.session.get("user_name")
     if request.method == "POST":
         form = BodyCheckForm(request.POST)
         if form.is_valid():
-            username = request.session.get("user_name")
-            if username is None:
-                raise Exception
             hight = form.cleaned_data["hight"]
             heigth = form.cleaned_data["height"]
             chest = form.cleaned_data["chest"]
@@ -21,9 +19,11 @@ def body_check(request):
             hip = form.cleaned_data["hip"]
             queith = form.cleaned_data["queith"]
             maxh = form.cleaned_data["maxh"]
-            if BodyData.objects.get(user_name=username):
+            try :
+                BodyData.objects.get.get(user_name=username)
                 bd = BodyData.objects.get(user_name=username)
                 bd.hight = hight
+                #form.fields['hight'].value= hight
                 bd.height = heigth
                 bd.chest = chest
                 bd.waist = waist
@@ -31,13 +31,28 @@ def body_check(request):
                 bd.queith = queith
                 bd.maxh = maxh
                 bd.save()
-            else:
+            except:
                 bd = BodyData(user_name=username, hight=hight, height=heigth, chest=chest, waist=waist, hip=hip,
                               queith=queith, maxh=maxh)
                 bd.save()
             messages.success(request,"保存成功")
+            return render(request, "wly_app/body.html", locals())
         else:
             error_msg =form.errors
             return render(request,"wly_app/body.html",{'form':form,"errors":error_msg})
+    try:
+        BodyData.objects.get(user_name=username)
+        flag = True
+        bd = models.BodyData.objects.get(user_name=username)
+        hight = bd.hight
+        height = bd.height
+        chest = bd.chest
+        waist = bd.waist
+        hip = bd.hip
+        queith = bd.queith
+        maxh = bd.maxh
+        return render(request, "wly_app/body.html", locals())
+    except:
+        flag = False
 
     return render(request,"wly_app/body.html",{'form':BodyCheckForm})

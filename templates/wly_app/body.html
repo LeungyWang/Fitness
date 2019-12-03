@@ -13,30 +13,50 @@
     <H1>我的身体数据</H1>
     <span>身高(cm)：</span>
     <div class="inputbox">
-    {{ form.hight}}
+        {% if flag %}
+        <input type="number" name="hight" value={{hight}} step="any" required id="id_hight">
+        {% else %}
+        {{ form.hight}}
+        {% endif %}
     </div>
     {{ errors.hight}}
     <br>
     <span>体重(kg)：</span>
      <div class="inputbox">
-    {{ form.height}}
-    </div>
+          {% if flag %}
+         <input type="number" name="height" value={{height}} step="any" required id="id_height">
+         {% else %}
+        {{ form.height}}
+        {% endif %}
+     </div>
     {{ errors.height}}
     <br>
     <span>胸围(cm)：</span>
     <div class="inputbox">
-    {{ form.chest}}
+    {% if flag %}
+         <input type="number" name="chest" value={{chest}} step="any" required id="id_chest">
+         {% else %}
+        {{ form.chest}}
+        {% endif %}
     </div>
     <span>{{ errors.chest}}</span><br>
     <span>腰围(cm)：</span>
     <div class="inputbox">
-   {{ form.waist}}
+   {% if flag %}
+         <input type="number" name="waist" value={{waist}} step="any" required id="id_waist">
+         {% else %}
+        {{ form.waist}}
+        {% endif %}
     </div>
 {{ errors.waist}}
 
     <span>臀围(cm)：</span>
     <div class="inputbox">
-     {{ form.hip}}
+     {% if flag %}
+         <input type="number" name="hip" value={{hip}} step="any" required id="id_hip">
+         {% else %}
+        {{ form.hip}}
+        {% endif %}
     </div>
 <span>{{ errors.hip}}</span><br>
     <br><br>
@@ -44,14 +64,22 @@
     <H1></H1>
     <span>静息心率(bpm)：</span>
     <div class="inputbox">
-     {{ form.queith}}
+      {% if flag %}
+         <input type="number" name="queith" value={{queith}} step="any" required id="id_queith">
+         {% else %}
+        {{ form.queith}}
+        {% endif %}
     </div>
     {{ errors.queith}}
         <br><br>
 
     <span>最大心率(bpm)：</span>
     <div class="inputbox">
-    {{ form.maxh}}
+    {% if flag %}
+         <input type="number" name="maxh" value={{maxh}} step="any" required id="id_maxh">
+         {% else %}
+        {{ form.maxh}}
+        {% endif %}
 
     </div>
      {{ errors.maxh}}
