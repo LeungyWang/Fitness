@@ -34,20 +34,20 @@ table.gridtable td {
 margin-left:auto;
 margin-right:auto;
 max-width: 500px;
-background: #4ca9be;
+background: #F7F7F7;
 /*padding: 25px 15px 25px 10px;*/
 font: 15px Georgia, "Times New Roman", Times, serif;
-color: #ffffff;
-/*text-shadow: 1px 1px 1px #FFF;*/
+color: #000000;
+text-shadow: 1px 1px 1px #FFF;
 border:1px solid #E4E4E4;
 }
 .basic-grey h1 {
 font-size: 25px;
-padding: 20px 45px 15px 100px;
+padding: 20px 5px 10px 100px;
 display: block;
 border-bottom:1px solid #E4E4E4;
 margin: -10px -15px 30px 10px;
-color: #ffffff;
+color: #000000;
 }
 .basic-grey h1>span {
 display: block;
@@ -100,13 +100,13 @@ line-height: 25px;
 height:100px;
 }
 .basic-grey .button {
-background: #32a79c;
+background: #E27575;
 border: none;
 padding: 10px 25px 10px 25px;
 color: #FFF;
 box-shadow: 1px 1px 5px #B6B6B6;
 border-radius: 3px;
-text-shadow: 1px 1px 1px #295088;
+text-shadow: 1px 1px 1px #9E3F3F;
 cursor: pointer;
 }
 .basic-grey .button:hover {
@@ -120,14 +120,3 @@ background: #CF7A7A
 .basic-grey table th {font-size:12px;background-color:#b8b8b8;border-width: 1px;padding: 8px;border-style: solid;border-color: #a9a9a9;text-align:left;}
 .basic-grey table tr {background-color:#ffffff;}
 .basic-grey table td {font-size:12px;border-width: 1px;padding: 8px;border-style: solid;border-color: #a9a9a9;}
-
-.button{
-background: #E27575;
-border: none;
-padding: 10px 25px 10px 25px;
-color: #FFF;
-box-shadow: 1px 1px 5px #B6B6B6;
-border-radius: 3px;
-text-shadow: 1px 1px 1px #9E3F3F;
-cursor: pointer;
-}
