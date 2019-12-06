@@ -61,3 +61,6 @@ def body_test(request):
 def abs_test(request):
     return render(request,"wly_app/abstest.html")
 
+
+def pecs_test(request):
+    return render(request,'wly_app/pecstest.html')

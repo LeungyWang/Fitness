@@ -34,10 +34,10 @@ table.gridtable td {
 margin-left:auto;
 margin-right:auto;
 max-width: 500px;
-background: #4ca9be;
+background: #F7F7F7;
 /*padding: 25px 15px 25px 10px;*/
 font: 15px Georgia, "Times New Roman", Times, serif;
-color: #ffffff;
+color: #000000;
 /*text-shadow: 1px 1px 1px #FFF;*/
 border:1px solid #E4E4E4;
 }
@@ -47,7 +47,7 @@ padding: 20px 45px 15px 100px;
 display: block;
 border-bottom:1px solid #E4E4E4;
 margin: -10px -15px 30px 10px;
-color: #ffffff;
+color: #000000;
 }
 .basic-grey h1>span {
 display: block;
@@ -122,7 +122,7 @@ background: #CF7A7A
 .basic-grey table td {font-size:12px;border-width: 1px;padding: 8px;border-style: solid;border-color: #a9a9a9;}
 
 .button{
-background: #E27575;
+background: #32a79c;
 border: none;
 padding: 10px 25px 10px 25px;
 color: #FFF;
