@@ -4,7 +4,9 @@ from . import views
 app_name = 'wly_app'
 
 urlpatterns=[
-    path('body/', views.body_check, name='user_login'),
+    path('body/', views.body_check, name='body_check'),
+    path('test/',views.body_test,name='body_test'),
+    path('test/abs/',views.abs_test,name='abs_test')
 
 ]
 

@@ -19,22 +19,10 @@ def body_check(request):
             hip = form.cleaned_data["hip"]
             queith = form.cleaned_data["queith"]
             maxh = form.cleaned_data["maxh"]
-            try :
-                BodyData.objects.get.get(user_name=username)
-                bd = BodyData.objects.get(user_name=username)
-                bd.hight = hight
-                #form.fields['hight'].value= hight
-                bd.height = heigth
-                bd.chest = chest
-                bd.waist = waist
-                bd.hip = hip
-                bd.queith = queith
-                bd.maxh = maxh
-                bd.save()
-            except:
-                bd = BodyData(user_name=username, hight=hight, height=heigth, chest=chest, waist=waist, hip=hip,
-                              queith=queith, maxh=maxh)
-                bd.save()
+            BMI = round(heigth / ((hight / 100) ** 2), 2)
+            bd = BodyData(user_name=username, hight=hight, height=heigth, chest=chest, waist=waist, hip=hip,
+                              queith=queith, maxh=maxh,BMI = BMI)
+            bd.save()
             messages.success(request,"保存成功")
             return render(request, "wly_app/body.html", locals())
         else:
@@ -56,3 +44,20 @@ def body_check(request):
         flag = False
 
     return render(request,"wly_app/body.html",{'form':BodyCheckForm})
+
+def body_test(request):
+    username = request.session.get("user_name")
+    bd_finish = False
+    try:
+        bd_data = BodyData.objects.get(user_name=username)
+        bd_finish = True
+        hight = bd_data.hight
+        height = bd_data.height
+        BMI = bd_data.BMI
+    except:
+        pass
+    return render(request,"wly_app/physicaltest.html",locals())
+
+def abs_test(request):
+    return render(request,"wly_app/abstest.html")
+

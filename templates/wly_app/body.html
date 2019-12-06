@@ -3,9 +3,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="{% static 'css/page1.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/page2.css' %}" />
 
-    <title>我的身体数据{{requst.session.user_name}}</title>
+    <title>我的身体数据</title>
 </head>
 <body bgcolor="#F7F7F7">
 <form method="post" action="/command/body/" class="basic-grey">
@@ -58,9 +58,7 @@
         {{ form.hip}}
         {% endif %}
     </div>
-<span>{{ errors.hip}}</span><br>
-    <br><br>
-
+<span>{{ errors.hip}}</span>
     <H1></H1>
     <span>静息心率(bpm)：</span>
     <div class="inputbox">
@@ -85,7 +83,9 @@
      {{ errors.maxh}}
     <br><br>
     <H1></H1>
-    <input type="submit" value="保存" class="button">
+    <center><input type="submit" value="保存" class="button"></center>
+
+
 
 
 </form>

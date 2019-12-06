@@ -1,0 +1,76 @@
+{% load staticfiles %}
+<meta http-equiv='Content-type' content='text/htm'>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/page2.css' %}" />
+    <style>
+a {
+            /* 取消下划线 */
+            text-decoration: none;
+            /* 取消选中时的背景色 */
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+        /* 已读时的字体颜色 */
+        a:visited {
+            color: black;
+        }
+        /* 点击时的字体颜色 */
+        a:active {
+            color: #000000;
+        }
+
+    </style>
+    <title>体能测试</title>
+</head>
+<body bgcolor="#F7F7F7">
+<!-- Table goes in the document BODY -->
+<table class="gridtable" style="margin-left:25%">
+<tr>
+    <th>必测项目</th>
+</tr>
+<tr>
+    <td><b>完善身体数据</b>  &nbsp;&nbsp;&nbsp;
+        {% if bd_finish %}
+        ✔️
+    {% else %}
+        待完成
+        {% endif %}
+        </br>️
+        </br>️
+    BMI:{{BMI}}
+    </td>
+
+</tr>
+    <th>选测项目</th>
+<tr>
+	<td>
+        <H4><a href="/command/test/abs">腹肌耐力测试</a></H4>
+        1分钟·腹肌耐力越好，同样体脂率下腹肌会更清晰
+    </td>
+</tr>
+    <tr>
+	<td>
+        <H4><a href="">胸肌耐力测试</a></H4>
+        2分钟·胸耐力越好，同样的动作你可以完成更多的次数<br>
+        助你练习更高阶的课程
+    </td>
+</tr>
+     <tr>
+	<td>
+        <H4><a href="">胸肌耐力测试</a></H4>
+        2分钟·胸耐力越好，同样的动作你可以完成更多的次数<br>
+        助你练习更高阶的课程
+    </td>
+</tr>
+    <tr>
+	<td>
+        <a href=""><H4>心肺功能测试</H4></a>
+        3分钟·健康的心肺功能可以降低慢性病患病率<br>
+        支持你做更有挑战的训练
+    </td>
+</tr>
+</table>
+
+</body>
+</html>
