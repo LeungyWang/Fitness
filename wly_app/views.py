@@ -61,3 +61,11 @@ def body_test(request):
 def abs_test(request):
     return render(request,"wly_app/abstest.html")
 
+def pecs_test(request):
+    return render(request,"wly_app/pecstest.html")
+
+def limbs_test(request):
+    return render(request,"wly_app/limbtest.html")
+
+def cox_test(request):
+    return render(request,'wly_app/coxtest.html')
