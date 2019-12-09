@@ -1,0 +1,40 @@
+{% load staticfiles %}
+<meta http-equiv='Content-type' content='text/htm'>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/page1.css' %}" />
+
+    <title>个人信息</title>
+</head>
+<body >
+	<div class="basic-grey" >
+		用户名：{{request.session.user_name}}
+		<h1>个人信息</h1>
+		<span>姓名：</span>
+		<input type="text" id="name" value="{{info_list.vip_name}}">
+		<span>性别：</span>
+		<input type="text" id="sex" value="{{info_list.vip_sex}}">
+		<span>生日：</span>
+		<input type="text" id="bir" value="{{info_list.vip_birthday}}"><br>
+		<span>手机：</span>
+		<input type="text" id="phone" value="{{info_list.vip_phone}}">
+		<span>邮箱：</span>
+		<input type="text" id="email" value="{{info_list.vip_email}}"><br>
+		<span>会员时长：</span>
+		<input type="text" id="duration" value="{{info_list.vip_duriation}}" >
+		<span>会员等级：</span>
+		<input type="text" id="level" value="{{info_list.vip_level}}">
+
+
+		<table style="width:30%">
+			<tr>
+				<th>已选课程</th>
+			</tr>
+			<tr>
+				<td>瑜伽</td>
+			</tr>
+			</table>
+	</div>
+</body>
+</html>
