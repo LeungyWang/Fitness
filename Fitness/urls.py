@@ -21,4 +21,5 @@ urlpatterns = [
     path('account/',include('users.urls',namespace='users')),
     path('choice/',include('ly_app.urls',namespace='ly_app')),
     path('command/',include('wly_app.urls',namespace='wly_app')),
+    path('device/',include('gsj_app.urls',namespace='gsj_app')),
 ]
