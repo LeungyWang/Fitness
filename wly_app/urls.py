@@ -14,5 +14,8 @@ urlpatterns=[
     path('bodyreport',views.body_report,name='body_report'),
     path('warning',views.warning,name='warning'),
     path('trainingplan',views.trainingplan_recommand,name='trainingplan'),
+    path('body/bodypic',views.body_pic,name="bodypic"),
+    path('warning2',views.warning_two,name='warning2'),
+
 ]
 

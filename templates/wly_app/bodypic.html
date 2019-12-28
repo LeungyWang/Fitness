@@ -1,0 +1,45 @@
+{% load staticfiles %}
+<meta http-equiv='Content-type' content='text/htm'>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/page2.css' %}" />
+    <title>身体数据动态监测</title>
+</head>
+<body bgcolor="#F7F7F7">
+<!-- Table goes in the document BODY -->
+<table class="gridtable" style="margin-left:25%;width: 550px;">
+<tr>
+    <th>身体数据动态监测</th>
+</tr>
+
+<tr>
+	<td>
+        <img src="{{BMIfr}}" style="">
+        </br>️
+    </td>
+</tr>
+    <tr>
+	<td>
+        <img src="{{Wefr}}" style="">
+
+        </br>️
+    </td>
+</tr>
+<tr>
+	<td>
+        <img src="{{Queifr}}" style="">
+
+        </br>️
+    </td>
+</tr>
+<tr>
+	<td>
+        <img src="{{Maxfr}}" style="">
+
+        </br>️
+    </td>
+</tr>
+</table>
+</body>
+</html>

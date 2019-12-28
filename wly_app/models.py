@@ -1,7 +1,9 @@
 from django.db import models
 import django.utils.timezone as timezone
+
+
 class BodyData(models.Model):
-    user_name = models.CharField(max_length=30,primary_key=True)
+    user_name = models.ForeignKey("users.New_User",to_field="login_name",on_delete=models.CASCADE)
     hight = models.DecimalField(max_digits=5,decimal_places=1)
     height = models.DecimalField(max_digits=5,decimal_places=1)
     chest = models.DecimalField(max_digits=5,decimal_places=1)
@@ -10,6 +12,10 @@ class BodyData(models.Model):
     queith = models.DecimalField(max_digits=5,decimal_places=1)
     maxh = models.DecimalField(max_digits=5,decimal_places=1)
     BMI = models.DecimalField(max_digits=5,decimal_places=1)
+    createon = models.DateTimeField(default=timezone.now)
+
+    class Meta:
+        unique_together = ["user_name","createon"]
 
 # Create your models here.
 class BodyParts(models.Model):
@@ -21,6 +27,7 @@ class BodytestStandard(models.Model):
     value = models.IntegerField()
     points = models.IntegerField()
     comment = models.CharField(max_length=60,default="c")
+
 
     
 

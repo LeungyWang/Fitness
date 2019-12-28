@@ -14,11 +14,16 @@ from django.contrib.auth import authenticate, login
 from django.http import HttpResponse,JsonResponse
 from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger,InvalidPage
+from datetime import datetime
+import matplotlib.pyplot as plt #引入绘图库
+from matplotlib.font_manager import FontProperties 
+
 # Create your views here.
 from .models import UserPysicalTest
 
 def body_check(request):
     username = request.session.get("user_name")
+    user_name = New_User.objects.get(login_name=username)
     if request.method == "POST":
         form = BodyCheckForm(request.POST)
         if form.is_valid():
@@ -30,18 +35,21 @@ def body_check(request):
             queith = form.cleaned_data["queith"]
             maxh = form.cleaned_data["maxh"]
             BMI = round(heigth / ((hight / 100) ** 2), 2)
-            bd = BodyData(user_name=username, hight=hight, height=heigth, chest=chest, waist=waist, hip=hip,
+            bd = BodyData(user_name=user_name, hight=hight, height=heigth, chest=chest, waist=waist, hip=hip,
                               queith=queith, maxh=maxh,BMI = BMI)
             bd.save()
+            DrawdataPic(user_name,"BMI","BMI","BMI指数变化图","BMI")
+            DrawdataPic(user_name,"weight","weight","体重变化图","体重(kg)")
+            DrawdataPic(user_name,"queith","queith","静息心率变化图","静息心率(bpm)")
+            DrawdataPic(user_name,"maxh","maxh","最大心率变化图","最大心率(bpm)")
             messages.success(request,"保存成功")
             return render(request, "wly_app/body.html", locals())
         else:
             error_msg =form.errors
             return render(request,"wly_app/body.html",{'form':form,"errors":error_msg})
-    try:
-        BodyData.objects.get(user_name=username)
+    try:    
+        bd = BodyData.objects.filter(user_name=user_name).order_by("-createon")[0]
         flag = True
-        bd = models.BodyData.objects.get(user_name=username)
         hight = bd.hight
         height = bd.height
         chest = bd.chest
@@ -55,6 +63,49 @@ def body_check(request):
 
     return render(request,"wly_app/body.html",{'form':BodyCheckForm})
 
+#绘制身体数据变化图
+def DrawdataPic(user_name,filename,para,title,yname):
+    font_set = FontProperties(fname=r"./static/font/MSYH.TTC") 
+    datarecord = BodyData.objects.filter(user_name=user_name).order_by("createon")
+    data=[]
+    time=[]           
+    if para=="BMI":
+        for record in datarecord:
+            data.append(record.BMI)
+            time.append(record.createon)
+    elif para=="weight":
+        for record in datarecord:
+            data.append(record.height)
+            time.append(record.createon)
+    elif para=="queith":
+        for record in datarecord:
+            data.append(record.queith)
+            time.append(record.createon)  
+    else:
+        for record in datarecord:
+            data.append(record.maxh)
+            time.append(record.createon)       
+    xs = [datetime.strptime(str(d)[0:10],"%Y-%m-%d").date() for d in time]
+    plt.figure(dpi=80)
+    plt.title(title,fontproperties=font_set,fontsize=17)
+    plt.plot(xs,data,'o-')
+    plt.xlabel("测试日期",fontproperties=font_set,fontsize=12)
+    plt.gcf().autofmt_xdate()
+    plt.ylabel(yname,fontproperties=font_set,fontsize=12)
+    plt.savefig("./static/img/"+filename+".png")    
+
+def body_pic(request):
+    try:
+        username = request.session.get("user_name")
+        user_name = New_User.objects.get(login_name=username)
+        bd = BodyData.objects.filter(user_name=user_name).order_by("-createon")[0]
+        BMIfr = "/static/img/BMI.png"
+        Wefr = "/static/img/weight.png"
+        Queifr = "/static/img/queith.png"
+        Maxfr = "/static/img/maxh.png"
+    except:
+        return redirect("/command/warning2")
+    return render(request,"wly_app/bodypic.html",locals())
 #体能测试页面
 def body_test(request):
     username = request.session.get("user_name")
@@ -66,7 +117,7 @@ def body_test(request):
     limb_finish = False
     ht_finish = False
     try:
-        bd_data = BodyData.objects.get(user_name=username)
+        bd_data = BodyData.objects.filter(user_name=user_name)[0]
         bd_finish = True
         hight = bd_data.hight
         height = bd_data.height
@@ -266,6 +317,8 @@ def TestCompareComment(user_name,partcode):
 def warning(request):
     return render(request,"wly_app/warning.html")
 
+def warning_two(request):
+    return render(request,"wly_app/warning2.html")
 
 #智能训练计划
 def trainingplan_recommand(request):

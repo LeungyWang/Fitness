@@ -82,13 +82,39 @@
     </div>
      {{ errors.maxh}}
     <br><br>
-    <H1></H1>
-    <center><input type="submit" value="保存" class="button"></center>
-
-
-
-
+    <input value="保存" type="submit" style="background: #295088;
+    border: none;
+    padding: 10px 25px 10px 25px;
+    color: #FFF;
+    box-shadow: 1px 1px 5px #B6B6B6;
+    border-radius: 3px;
+    text-shadow: 1px 1px 1px #9E3F3F;
+    cursor: pointer;
+    margin-left: 370px;
+    margin-right: 100px;" >
 </form>
+    <!-- <center><input type="submit" value="保存" class="button">  -->
+    <button onclick="javascript:window.location.href='/command/body/bodypic'" style="background: #295088;
+        border: none;
+        padding: 10px 25px 10px 25px;
+        color: #FFF;
+        box-shadow: 1px 1px 5px #B6B6B6;
+        border-radius: 3px;
+        text-shadow: 1px 1px 1px #9E3F3F;
+        cursor: pointer;
+        margin-left: 370px;
+        " >查看数据监测</button>
+
+{% if messages %}
+        <script>
+            {% for msg in messages %}
+                alert('{{ msg.message }}');
+            {% endfor %}
+        </script>
+    {% endif %}
+
+
+
 
 </body>
 </html>
