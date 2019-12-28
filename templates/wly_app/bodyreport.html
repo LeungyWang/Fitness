@@ -1,10 +1,80 @@
-<!DOCTYPE html>
+{% load staticfiles %}
+<meta http-equiv='Content-type' content='text/htm'>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <link rel="stylesheet" href="{% static 'css/page2.css' %}" />
+    <title>体测报告</title>
 </head>
-<body>
-$END$
+<body bgcolor="#F7F7F7">
+<!-- Table goes in the document BODY -->
+<table class="gridtable" style="margin-left:25%;width: 550px;">
+<tr>
+    <th>体测报告</th>
+</tr>
+<tr>
+    <td><b>体测得分：</b> {{score}}分 <br>
+    </td>
+    </tr>
+    <tr>
+    <th>各项能力</th>
+</tr>
+<tr>
+	<td>
+        <b>胸肌肌耐力：</b>&nbsp;{{pecstar}}&nbsp;&nbsp;{{peccpcomment}}<br><br>
+{{peccomment}}
+        </br>️
+    </td>
+</tr>
+    <tr>
+	<td>
+        <b>腹部肌耐力：</b></a> &nbsp;&nbsp;&nbsp;{{ absstar }}&nbsp;&nbsp;{{abscpcomment}}<br><br>
+        {{abscomment}}
+        </br>️
+    </td>
+</tr>
+     <tr>
+	<td>
+        <b>下肢肌耐力：</b> &nbsp;&nbsp;&nbsp;{{limbstar}}&nbsp;&nbsp;{{limbcpcomment}}<br><br>
+        {{limbcomment}}
+         </br>️
+    </td>
+</tr>
+    <tr>
+	<td>
+        <b>髋关节活动度：</b> {{coxstar}}&nbsp;&nbsp;{{coxcpcomment}}<br><br>
+        {{coxcomment}}
+         </br>️
+    </td>
+</tr>
+        <tr>
+	<td>
+        <b>心肺能力：</b>&nbsp;{{heartstar}}&nbsp;&nbsp;{{htcpcomment}}<br><br>
+        {{htcomment}}
+         </br>️
+    </td>
+</tr>
+<tr>
+	<td>
+<a href="/command/trainingplan"><button style="background: #295088;
+	border: none;
+	padding: 10px 25px 10px 25px;
+	color: #FFF;
+	box-shadow: 1px 1px 5px #B6B6B6;
+	border-radius: 3px;
+	text-shadow: 1px 1px 1px #9E3F3F;
+    cursor: pointer;
+    margin-left: 200px;" >获取推荐训练</button></a>
+</td>
+
+</tr>
+</table>
+{% if messages %}
+        <script>
+            {% for msg in messages %}
+                alert('{{ msg.message }}');
+            {% endfor %}
+        </script>
+    {% endif %}
 </body>
 </html>

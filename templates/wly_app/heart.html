@@ -1,10 +1,23 @@
-<!DOCTYPE html>
+{% load staticfiles %}
+<meta http-equiv='Content-type' content='text/htm'>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>心肺功能测试</title>
+    <link rel="stylesheet" href="{% static 'css/page3.css' %}" />
 </head>
-<body>
-$END$
+<body bgcolor="">
+        <input type="button" value="返回" class="button" onclick="location.href='/command/test'">
+    <form method="post" class="basic-grey">
+                        {% csrf_token %}
+         <H1>心肺功能测试</H1>
+        请如图所示完成动作<br><br>
+        <img src="{% static 'img/heart.jpg' %}" style="width: 500px;height: 400px;"><br><br>
+        <span>10秒内的脉搏数量是？</span>
+        <input type="number" name="heart"  style="width: 70px">次<!----> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="submit" value="确定" class="button">
+        <br>
+
+    </form>
 </body>
 </html>

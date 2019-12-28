@@ -25,9 +25,9 @@ a {
 </head>
 <body bgcolor="#F7F7F7">
 <!-- Table goes in the document BODY -->
-<table class="gridtable" style="margin-left:25%">
+<table class="gridtable" style="margin-left:25%;width: 600px;">
 <tr>
-    <th>必测项目</th>
+    <th>身体素质测试</th>
 </tr>
 <tr>
     <td><b>完善身体数据</b>  &nbsp;&nbsp;&nbsp;
@@ -42,33 +42,93 @@ a {
     </td>
 
 </tr>
-    <th>选测项目</th>
+    <th>体能测试</th>
 <tr>
 	<td>
-        <H4><a href="/command/test/abs">腹肌耐力测试</a></H4>
+        <a href="/command/test/abs" style="color: black"><b>腹肌耐力测试</b></a> &nbsp;&nbsp;&nbsp;
+        {% if abs_finish %}
+        ✔️
+    {% else %}
+        待完成
+        {% endif %}
+        </br>️
+        </br>️
         1分钟·腹肌耐力越好，同样体脂率下腹肌会更清晰
     </td>
 </tr>
     <tr>
 	<td>
-        <H4><a href="/command/test/pecs">胸肌耐力测试</a></H4>
-        2分钟·胸耐力越好，同样的动作你可以完成更多的次数<br>
-        助你练习更高阶的课程
+        <a href="/command/test/pecs" style="color: black"><b>胸肌耐力测试</b></a> &nbsp;&nbsp;&nbsp;
+        {% if pec_finish %}
+        ✔️
+    {% else %}
+        待完成
+        {% endif %}
+        </br>️
+        </br>️
+        2分钟·胸耐力越好，同样的动作你可以完成更多的次数 助你练习更高阶的课程<br>
+
     </td>
 </tr>
      <tr>
 	<td>
-        <H4><a href="/command/test/limb">下肢耐力测试</a></H4>
+        <a href="/command/test/limb" style="color: black"><b>下肢耐力测试</b></a> &nbsp;&nbsp;&nbsp;
+        {% if limb_finish %}
+        ✔️
+    {% else %}
+        待完成
+        {% endif %}
+         </br>️
+        </br>️
         3分钟·良好的下肢耐力，可以让你在各种体育项目中表现更出色<br>
     </td>
 </tr>
     <tr>
 	<td>
-        <H4><a href="/command/test/cox">髋关节柔韧性测试</a></H4>
+        <a href="/command/test/cox" style="color: black"><b>髋关节柔韧性测试</b></a> &nbsp;&nbsp;&nbsp;
+        {% if cox_finish %}
+        ✔️
+    {% else %}
+        待完成
+        {% endif %}
+         </br>️
+        </br>️
         2分钟·髋关节柔韧性是蹲、跑、跳类动作的安全保障<br>
     </td>
 </tr>
-</table>
+        <tr>
+	<td>
+        <a href="/command/test/heart" style="color: black"><b>心肺功能测试</b></a> &nbsp;&nbsp;&nbsp;
+        {% if ht_finish %}
+        ✔️
+    {% else %}
+        待完成
+        {% endif %}
+         </br>️
+        </br>️
+        1分钟·健康的心肺功能可以降低慢性病患病率，支持你做更有挑战的训练<br>
+    </td>
+</tr>
+<tr>
+	<td>
+<a href="/command/bodyreport"><button style="background: #295088;
+	border: none;
+	padding: 10px 25px 10px 25px;
+	color: #FFF;
+	box-shadow: 1px 1px 5px #B6B6B6;
+	border-radius: 3px;
+	text-shadow: 1px 1px 1px #9E3F3F;
+    cursor: pointer;
+    margin-left: 225px;" >查看体测报告</button></a>
+</td>
 
+</tr></table>
+{% if messages %}
+        <script>
+            {% for msg in messages %}
+                alert('{{ msg.message }}');
+            {% endfor %}
+        </script>
+    {% endif %}
 </body>
 </html>

@@ -1,0 +1,77 @@
+{% load staticfiles %}
+<meta http-equiv='Content-type' content='text/htm'>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/page2.css' %}" />
+    <title>智能训练计划</title>
+    <style>
+        ul.pagination {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+}
+
+ul.pagination li {display: inline;}
+
+ul.pagination li a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+    border: 1px solid #ddd;
+}
+
+ul.pagination li a.active {
+    background-color: #4CAF50;
+    color: white;
+    border: 1px solid #4CAF50;
+}
+
+ul.pagination li a:hover:not(.active) {background-color: #ddd;}
+
+div.center {text-align: center;}
+        </style>
+</head>
+<body bgcolor="#F7F7F7">
+<!-- Table goes in the document BODY -->
+<table class="gridtable" style="margin-left:25%;width: 550px;">
+<tr>
+    <th>智能训练计划</th>
+</tr>
+{% for course in courses %} 
+{% csrf_token %}
+<tr>
+	<td>
+        <b>{{course.0}}:</b><br>
+        <img src="{{course.3}}" style="width: 200px;height: 200px;margin-left: 150px;"><br>
+        <ul>
+        <li>动作要点：{{course.1}}</li>
+        <li>完成目标：{{course.2}}</li>
+    </td>
+</tr>
+{% endfor %}  
+</table>
+  <div class="center">
+    <ul class="pagination">
+      {% if courses.has_previous %}
+      <li><a href="?page={{courses.previous_page_number}}">«</a></li>
+      {% endif %}
+      <li><a href="?page=1">1</a></li>
+      <li><a href="?page=2">2</a></li>
+      <li><a href="?page=3">3</a></li>
+      {% if courses.has_next %}
+      <li><a href="?page={{courses.next_page_number}}">»</a></li>
+      {% endif %}
+    </ul>
+  </div>
+{% if messages %}
+        <script>
+            {% for msg in messages %}
+                alert('{{ msg.message }}');
+            {% endfor %}
+        </script>
+    {% endif %}
+</body>
+</html>

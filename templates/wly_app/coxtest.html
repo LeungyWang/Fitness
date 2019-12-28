@@ -6,15 +6,17 @@
     <title>髋关节柔韧性测试</title>
     <link rel="stylesheet" href="{% static 'css/page3.css' %}" />
 </head>
-<body bgcolor="#F7F7F7" >
+<body bgcolor="" >
         <input type="button" value="返回" class="button" onclick="location.href='/command/test'">
     <form method="post" class="basic-grey">
+                        {% csrf_token %}
          <H1>髋关节柔韧性测试</H1>
         测试前请先观看以下视频<br><br>
 <iframe class="ifvideo" src="//player.bilibili.com/player.html?aid=46655848&cid=81730546&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe><!----><H1></H1>
         <span>在最好的情况下，双腿与地面的夹角是？</span>
-        <input type="number" name="hight" ><!----> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <input type="submit" value="确定" class="button">
+        <input type="number" name="cox" style="width: 70px;">度 &nbsp;&nbsp;&nbsp;
+        <input type="submit" value="确定" class="button" >
+        <br>
         <br>
 
     </form>

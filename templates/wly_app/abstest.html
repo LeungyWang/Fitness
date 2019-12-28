@@ -7,18 +7,24 @@
 
     <title>腹肌能力测试</title>
 </head>
-<body bgcolor="#F7F7F7" >
+<body bgcolor="" >
             <input type="button" value="返回" class="button" onclick="location.href='/command/test'">
     <form method="post" class="basic-grey">
+        {% csrf_token %}
         <center> <H1>腹肌能力测试</H1> </center>
-        测试前请先观看以下视频<br>
+        <b>测试前请先观看以下视频</b><br><br>
 <iframe class="ifvideo" src="//player.bilibili.com/player.html?aid=34252946&cid=60001401&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 <!----><H1></H1>
-        <span>一分钟内：完成的卷腹数量是</span>
-        <input type="number" name="hight" ><!----> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span><b>一分钟内：完成的卷腹数量是</b></span>
+        <input type="number" name="abs"  style="width: 70px">次<!----> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <input type="submit" value="确定" class="button">
         <br>
+        <br>
+        <br>
+
 
     </form>
+
+
 </body>
 </html>

@@ -6,17 +6,17 @@
     <title>胸肌测试</title>
     <link rel="stylesheet" href="{% static 'css/page3.css' %}" />
 </head>
-<body bgcolor="#F7F7F7" >
+<body bgcolor="" >
         <input type="button" value="返回" class="button" onclick="location.href='/command/test'">
     <form method="post" class="basic-grey">
+                {% csrf_token %}
          <H1>胸肌能力测试</H1>
-        测试前请先观看以下视频<br><br>
+        <b>测试前请先观看以下视频</b><br><br>
 <iframe class="ifvideo" src="//player.bilibili.com/player.html?aid=53180676&cid=93045460&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe><!----><H1></H1>
-        <span>一次性完成的数量是？</span>
-        <input type="number" name="hight" ><!----> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <input type="submit" value="确定" class="button">
+        <span><b>一次性完成的数量是？</b></span>
+        <input type="number" name="pec" style="width: 70px";>次 &nbsp;&nbsp;&nbsp;
+        <input type="submit" value="确定" class="button" >        <br>
         <br>
-
     </form>
 </body>
 </html>
