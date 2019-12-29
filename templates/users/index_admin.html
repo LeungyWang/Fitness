@@ -1,0 +1,88 @@
+{% load staticfiles %}
+<meta http-equiv='Content-type' content='text/htm'>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>首页</title>
+		<link rel="stylesheet" href="{% static 'css/page.css' %}" />
+		<script type="text/javascript" src="{% static 'js/jquery.min.js' %}" ></script>
+		<script type="text/javascript" src="{% static 'js/index.js' %}" ></script>
+
+	</head>
+
+	<body>
+		<div class="left">
+			<div class="header">HighFit</div>
+        <div class="nav">
+            <ul>
+                <li class="list">					
+                    <h2><i></i></h2>
+                    <div class="hide">
+                        <h5> <a href="/choice/course/" target="test">选择课程</a></h5>
+                        <h5><a href="/choice/coach" target="test">选择教练</a></h5>
+						<h5><a href="/choice/info" target="test">查看个人信息</a></h5>
+                    </div>
+                </li>
+                <li class="list">
+                    <h2><i></i>推荐课程</h2>
+                    <div class="hide">
+						<h5><a href="/command/body" target="test">我的身体数据</a></h5>
+						<h5><a href="/command/test" target="test">体能测试</a></h5>
+						<h5><a href="/command/bodyreport" target="test">体测报告</a></h5>
+                        <h5><a href="/command/trainingplan" target="test">智能训练计划</a></h5>
+                    </div>
+                </li>
+            </ul>
+        </div>
+		</div>
+		<div class="top">
+			<div class="leftTiyle" id="flTitle">健身房管理系统</div>
+			<div class="thisUser">当前用户：{{request.session.user_name}}</div>
+		</div>
+		<div class="content">
+			<iframe frameborder=0 name="test"
+					scrolling=auto>			
+			</iframe>
+		</div>
+		
+		<div style="text-align:center;">
+<p>更多模板：<a href="http://www.mycodes.net/" target="_blank">源码之家</a></p>
+</div>
+		
+	</body>
+	<script>
+		(function () {
+			var oList = document.querySelectorAll('.list h2'),
+				oHide = document.querySelectorAll('.hide'),
+				oIcon = document.querySelectorAll('.list i'),
+				lastIndex = 0;
+			for(var i=0;i<oList.length;i++){
+				oList[i].index = i;//自定义属性
+				oList[i].isClick = false;
+				oList[i].initHeight = oHide[i].clientHeight;
+				oHide[i].style.height = '0';
+				oList[i].onclick = function () {
+					if(this.isClick){
+						oHide[this.index].style.height = '0';
+						oIcon[this.index].className = '';
+						oList[this.index].className = '';
+						oList[this.index].isClick = false;
+					}
+					else{
+						oHide[lastIndex].style.height = '0';
+						oIcon[lastIndex].className = '';
+						oList[lastIndex].className = '';
+						oHide[this.index].style.height = '150px';
+						oIcon[this.index].className = 'on';
+						oList[this.index].className = 'on';
+						oList[lastIndex].isClick = false;
+						oList[this.index].isClick = true;
+						lastIndex = this.index;
+					}
+				}
+			}
+		})();
+		</script>
+  
+</html>

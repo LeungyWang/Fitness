@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>课程录入</title>
+        <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+
+</head>
+<body>
+<div>
+    <ul>
+        <li><span>课程名称：<input id="name" type="text"></span></li>
+        <li><span>时长：<input id="timelong" type="text"></span></li>
+        <li><span>时间：<input id="times" type="text"></span></li>
+        <li><span>教室：<input id="classroom" type="text"></span></li>
+        <li><span>已选人数：<input id="person" type="text"></span></li>
+    </ul>
+    <button class="button">提交</button>
+</div>
+</body>
+<script>
+    $(document).ready(function () {
+       $(".button").click(function(){
+           $.ajax({
+               url:'/choice/coach_in/',
+               type:"post",
+               dataType:"json",
+               data:{
+                   "name":$("#name").val(),
+                   "timelong":$("#timelong").val(),
+                   "times":$("#times").val(),
+                   "classroom":$("#classroom").val(),
+                   "person":$("#person").val(),
+
+               },
+               success:function (res) {
+                   alert(res.data);
+                   window.location.reload();
+               }
+           });
+       });
+    });
+</script>
+</html>
