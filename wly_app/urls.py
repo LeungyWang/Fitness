@@ -16,13 +16,6 @@ urlpatterns=[
     path('trainingplan',views.trainingplan_recommand,name='trainingplan'),
     path('body/bodypic',views.body_pic,name="bodypic"),
     path('warning2',views.warning_two,name='warning2'),
-    path('pytestmanage',views.pytest_manage,name='pytestmanage'),
-    path('test/addtest',views.addtest,name='addtest'),
-    path('<str:partcode>/delete',views.deletetest,name='deletetest'),
-    path('<str:partcode>/edit',views.edittest,name='edittest'),
-    path('coursemanage',views.coursemanage,name='coursemanage'),
-    path('addcourse',views.addcourse,name='addcourse'),
-    path('course/<str:courseid>/delete',views.deletecourse,name='deletetest'),
-    path('course/<str:courseid>/edit',views.editcourse,name='editcourse'),
+
 ]
 

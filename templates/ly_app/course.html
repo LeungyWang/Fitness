@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{% static 'css/page1.css' %}" />
-
+<script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
     <title>选择健身课程</title>
 </head>
 <body >
@@ -15,18 +15,106 @@
 				<th>课程代号</th>
 				<th>课程名称</th>
 				<th>课程时长（分钟）</th>
+                <th>时间</th>
+                <th>教室</th>
 				<th>已选人数</th>
-				<th></th>
+				<th>操作</th>
 			</tr>
 			{% for c in course_list %}　　
                         <tr>
                             <td>{{ c.courseid }}</td>
                             <td>{{ c.name }}</td>
-                            <td>{{ c.tuition }}</td>
+                            <td>{{ c.spendtime }}</td>
+                            <td>{{ c.starttime }}</td>
+                            <td>{{ c.classroom }}</td>
                             <td>0</td>
-                            <td><button value="{{c.courseid }} " class="button">选择</button></td>
+                            <td><button value="{{c.courseid }} " class="button">选择</button><button class="del">删除</button><button class="edit">修改</button></td>
                         </tr>
             {% endfor %}
 		</table>
+    <div id="box" style="display: none;">
+    <ul>
+        <li><span>课程id：<input id="myid" type="text"></span></li>
+        <li><span>课程名称：<input id="name" type="text"></span></li>
+        <li><span>时长：<input id="timelong" type="text"></span></li>
+        <li><span>时间：<input id="times" type="text"></span></li>
+        <li><span>教室：<input id="classroom" type="text"></span></li>
+        <li><span>已选人数：<input id="person" type="text"></span></li>
+    </ul>
+    <button class="button2">提交</button>
+</div>
 </body>
+<script>
+    $(document).ready(function () {
+       $(".button").click(function(){
+           var courseid=$(this).parent().parent().find("td:eq(0)").text();
+            $.ajax({
+               url:'/choice/course_choose/',
+               type:"post",
+               dataType:"json",
+               data:{
+                   "courseid":courseid
+               },
+               success:function (res) {
+                   alert(res.data);
+                   window.location.reload();
+               },
+                error:function (err) {
+                    alert("选择有误请重新选择！选过了");
+                }
+           });
+       });
+       $(".del").click(function(){
+           var courseid=$(this).parent().parent().find("td:eq(0)").text();
+            $.ajax({
+               url:'/choice/course_del/',
+               type:"post",
+               dataType:"json",
+               data:{
+                   "courseid":courseid
+               },
+               success:function (res) {
+                   alert(res.data);
+                   window.location.reload();
+               },
+                error:function (err) {
+                    alert("选择有误请重新选择！选过了");
+                }
+           });
+       });
+        $(".edit").click(function(){
+            $("#box").show(200);
+           $("#myid").val($(this).parent().parent().find("td:eq(0)").text());
+           $("#name").val($(this).parent().parent().find("td:eq(1)").text());
+           $("#timelong").val($(this).parent().parent().find("td:eq(2)").text());
+           $("#times").val($(this).parent().parent().find("td:eq(3)").text());
+           $("#classroom").val($(this).parent().parent().find("td:eq(4)").text());
+           $("#person").val($(this).parent().parent().find("td:eq(5)").text());
+
+        });
+        $(".button2").click(function(){
+           $.ajax({
+               url:'/choice/course_edit/',
+               type:"post",
+               dataType:"json",
+               data:{
+                   "courseid":$("#myid").val(),
+                   "name":$("#name").val(),
+                   "timelong":$("#timelong").val(),
+                   "times":$("#times").val(),
+                   "classroom":$("#classroom").val(),
+                   "person":$("#person").val(),
+
+               },
+               success:function (res) {
+                   alert(res.data);
+                   window.location.reload();
+               },
+                error:function (err) {
+                    alert("课程使用中，无法修改！");
+                }
+           });
+       });
+    });
+</script>
 </html>

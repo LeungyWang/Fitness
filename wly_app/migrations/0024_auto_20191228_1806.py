@@ -26,7 +26,7 @@ class Migration(migrations.Migration):
                 ('maxh', models.DecimalField(decimal_places=1, max_digits=5)),
                 ('BMI', models.DecimalField(decimal_places=1, max_digits=5)),
                 ('createon', models.DateTimeField(default=django.utils.timezone.now)),
-                ('user_name', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='users.New_User', to_field='login_name')),
+                ('user_name', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='users.New_User',)),
             ],
         ),
         migrations.AlterUniqueTogether(

@@ -21,8 +21,6 @@ class BodyData(models.Model):
 class BodyParts(models.Model):
     partcode = models.CharField(max_length=16,primary_key=True)
     partname = models.CharField(max_length=10)
-    parttestname=models.CharField(max_length=30,default="")
-    parttestdesc=models.CharField(max_length=30,default="")
 
 class BodytestStandard(models.Model):
     partcode = models.ForeignKey("BodyParts",to_field="partcode",on_delete=True,related_name="Parts_Test")

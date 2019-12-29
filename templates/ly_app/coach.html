@@ -4,11 +4,117 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{% static 'css/page1.css' %}" />
+    <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
     <title>选择教练</title>
 </head>
 <body>
     <div class="basic-grey" >
         <h1>欢迎选择教练</h1>
+        <a><button>增加</button>
+        <table >
+			<tr>
+				<th>教练编号</th>
+				<th>教练姓名</th>
+				<th>教练性别</th>
+                <th>年龄</th>
+                <th>性格</th>
+                <th>操作</th>
+			</tr>
+			{% for c in coach_list %}　　
+                        <tr>
+                            <td>{{ c.coachid }}</td>
+                            <td>{{ c.name }}</td>
+                            <td>{{ c.sex }}</td>
+                            <td>{{ c.age }}</td>
+                            <td>{{ c.sense }}</td>
+                            <td><button class="button">选择</button>
+                              <button class="del">删除</button>
+                              <button class="edit">修改</button>
+                            </td>
+                        </tr>
+            {% endfor %}
+		</table>
+    <div id="box" style="display: none;">
+    <ul>
+        <li><span>教练id：<input id="myid" type="text"></span></li>
+        <li><span>教练姓名：<input id="name" type="text"></span></li>
+        <li><span>教练性别：<input id="sex" type="text"></span></li>
+        <li><span>教练年龄：<input id="age" type="text"></span></li>        
+        <li><span>教练性格：<input id="sense" type="text"></span></li>
+
+    </ul>
+    <button class="button2">提交</button>
     </div>
 </body>
+<script>
+    $(document).ready(function () {
+       $(".button").click(function(){
+           var coachid=$(this).parent().parent().find("td:eq(0)").text();
+            $.ajax({
+               url:'/choice/coach_choose/',
+               type:"post",
+               dataType:"json",
+               data:{
+                   "coachid":coachid
+               },
+               success:function (res) {
+                   alert(res.data);
+                   window.location.reload();
+               },
+                error:function (err) {
+                    alert("选择有误请重新选择！选过了");
+               }
+           });
+       });
+
+       $(".del").click(function(){
+           var coachid=$(this).parent().parent().find("td:eq(0)").text();
+            $.ajax({
+               url:'/choice/coach_del/',
+               type:"post",
+               dataType:"json",
+               data:{
+                   "coachid":coachid
+               },
+               success:function (res) {
+                   alert(res.data);
+                   window.location.reload();
+               },
+                error:function (err) {
+                    alert("选择有误请重新选择！选过了");
+                }
+           });
+       });
+        $(".edit").click(function(){
+            $("#box").show(200);
+           $("#myid").val($(this).parent().parent().find("td:eq(0)").text());
+           $("#name").val($(this).parent().parent().find("td:eq(1)").text());
+           $("#sex").val($(this).parent().parent().find("td:eq(2)").text());
+           $("#age").val($(this).parent().parent().find("td:eq(3)").text());
+           $("#sense").val($(this).parent().parent().find("td:eq(4)").text());
+        });
+        $(".button2").click(function(){
+           $.ajax({
+               url:'/choice/coach_edit/',
+               type:"post",
+               dataType:"json",
+               data:{
+                   "coachid":$("#myid").val(),
+                   "name":$("#name").val(),
+                   "sex":$("#sex").val(),
+                   "age":$("#age").val(),
+                   "sense":$("#sense").val(),
+               },
+               success:function (res) {
+                   alert(res.data);
+                   window.location.reload();
+               },
+                error:function (err) {
+                    alert("课程使用中，无法修改！");
+                }
+           });
+       });
+    });
+</script>
+
 </html>

@@ -4,13 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{% static 'css/page1.css' %}" />
-
+<script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
     <title>个人信息</title>
 </head>
 <body >
 	<div class="basic-grey" >
 		用户名：{{request.session.user_name}}
 		<h1>个人信息</h1>
+        <div><button id="submit">保存</button></div>
 		<span>姓名：</span>
 		<input type="text" id="name" value="{{info_list.vip_name}}">
 		<span>性别：</span>
@@ -29,12 +30,94 @@
 
 		<table style="width:30%">
 			<tr>
-				<th>已选课程</th>
+                <th>课程编号</th>
+                <th>已选课程</th>
+                <th></th>
 			</tr>
+				{% for c in result_course %}　　
+                        <tr>
+                            <td>{{ c.courseid}}</td>
+                            <td>{{ c.name }}</td>
+                            <td><button class="del2">退选</button>
+                        </tr>
+            {% endfor %}
+			</table>
+            <table style="width:30%">
 			<tr>
-				<td>瑜伽</td>
+				<th>已选私教</th>
+        <th></th>
+        <th></th>
 			</tr>
+				{% for c in result_coach %}　　
+                        <tr>
+                            <td>{{ c.coachid }}</td>
+                            <td>{{ c.name }}</td>
+
+                            <td><button class="del">退选</button>
+                        </tr>
+            {% endfor %}
 			</table>
 	</div>
 </body>
+<script>
+    $(document).ready(function () {
+       $("#submit").click(function(){
+           alert($("#name").val());
+           $.ajax({
+               url:'/choice/info_save/',
+               type:"post",
+               dataType:"json",
+               data:{
+                   "name":$("#name").val(),
+                   "sex":$("#sex").val(),
+                   "bir":$("#bir").val(),
+                   "phone":$("#phone").val(),
+                   "email":$("#email").val(),
+                   "duration":$("#duration").val(),
+                   "level":$("#level").val(),
+               },
+               success:function (res) {
+                   alert(res.data);
+                   window.location.reload();
+               }
+           });
+       });
+    });
+         $(".del2").click(function(){
+           var courseid=$(this).parent().parent().find("td:eq(0)").text();
+            $.ajax({
+               url:'/choice/UserCourse_del/',
+               type:"post",
+               dataType:"json",
+               data:{
+                   "courseid":courseid
+               },
+               success:function (res) {
+                   alert(res.data);
+                   window.location.reload();
+               },
+                error:function (err) {
+                    alert("选择有误请重新选择！选过了");
+                }
+           });
+       });
+           $(".del").click(function(){
+           var coachid=$(this).parent().parent().find("td:eq(0)").text();
+            $.ajax({
+               url:'/choice/UserCoach_del/',
+               type:"post",
+               dataType:"json",
+               data:{
+                   "coachid":coachid
+               },
+               success:function (res) {
+                   alert(res.data);
+                   window.location.reload();
+               },
+                error:function (err) {
+                    alert("选择有误请重新选择！选过了");
+                }
+           });
+       });
+</script>
 </html>
