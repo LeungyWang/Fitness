@@ -40,7 +40,10 @@ def user_login(request):
 				else:
 					request.session['is_login'] = True
 					request.session['user_name'] = username
-					return render(request,'users/index.html')
+					return render(request,'users/index_admin.html')
 			else:
 				raise Exception
 	return render(request,'users/login.html')
+
+
+

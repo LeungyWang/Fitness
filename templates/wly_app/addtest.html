@@ -1,0 +1,47 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/static/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <title>能力测试信息管理</title>
+</head>
+<body bgcolor="#F7F7F7">
+    <div class="container my-con">
+        <H3>添加能力测试</H3>
+    <form action="" method="post">
+        {% csrf_token %}
+        
+
+            <div class="col-md-10">
+        <div class="form-group">
+            <label for="partcode" style="margin-left: 200px;margin-top: 50px;">测试编号</label>
+            <input type="text" class="form-control" id="partcode" name="partcode" style="width: 200px; margin-left: 200px;">
+        </div>
+
+        <div class="form-group">
+            <label for="partname" style="margin-left: 200px;">测试部位名称</label>
+            <input type="text" class="form-control" id="partname" name="partname" style="width: 200px;margin-left: 200px;">
+        </div>
+
+        <div class="form-group">
+            <label for="testname" style="margin-left: 200px;">能力测试名称</label>
+            <input type="text" class="form-control" id="testname" name="testname" style="width: 200px;margin-left: 200px;">
+        </div>
+
+        <div class="form-group">
+            <label for="description" style="margin-left: 200px;">能力测试介绍</label>
+            <input type="text" class="form-control" id="description" name="description" style="width: 500px;margin-left: 200px;">
+        </div>
+        <a href="/command/pytestmanage"><button type="button"  class="btn btn-success pull-right" style="margin-left: 10px;">返回</button></a>
+        &nbsp;&nbsp;<button type="submit" class="btn btn-success pull-right">提交</button>
+    </div>
+    </div>
+    </form>
+
+
+
+</body>
+</html>

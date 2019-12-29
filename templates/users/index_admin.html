@@ -1,0 +1,93 @@
+{% load staticfiles %}
+<meta http-equiv='Content-type' content='text/htm'>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>首页</title>
+		<link rel="stylesheet" href="{% static 'css/page.css' %}" />
+		<script type="text/javascript" src="{% static 'js/jquery.min.js' %}" ></script>
+		<script type="text/javascript" src="{% static 'js/index.js' %}" ></script>
+
+	</head>
+
+	<body>
+		<div class="left">
+			<div class="header">HighFit</div>
+        <div class="nav">
+            <ul>
+                <li class="list">					
+                    <h2><i></i>教练业务信息管理</h2>
+                    <div class="hide">
+                        <h5> <a href="" target="test">教练个人信息操作</a></h5>
+                        <h5><a href="" target="test">查看教练个人信息</a></h5>
+                    </div>
+                </li>
+                <li class="list">
+                    <h2><i></i>公开课程业务信息管理</h2>
+                    <div class="hide">
+						<h5><a href="" target="test">教室信息管理</a></h5>
+						<h5><a href="" target="test">公开课程信息管理</a></h5>
+                    </div>
+				</li>
+				<li class="list">
+                    <h2><i></i>个性化推荐业务信息管理</h2>
+                    <div class="hide">
+						<h5><a href="/command/pytestmanage" target="test">能力测试信息管理</a></h5>
+						<h5><a href="" target="test">能力评价标准信息管理</a></h5>
+						<h5><a href="/command/coursemanage" target="test">推荐课程信息管理</a></h5>
+                    </div>
+                </li>
+            </ul>
+        </div>
+		</div>
+		<div class="top">
+			<div class="leftTiyle" id="flTitle">健身房管理系统</div>
+			<div class="thisUser">当前用户：{{request.session.user_name}}</div>
+		</div>
+		<div class="content">
+			<iframe frameborder=0 name="test"
+					scrolling=auto>			
+			</iframe>
+		</div>
+		
+		<div style="text-align:center;">
+<p>更多模板：<a href="http://www.mycodes.net/" target="_blank">源码之家</a></p>
+</div>
+		
+	</body>
+	<script>
+		(function () {
+			var oList = document.querySelectorAll('.list h2'),
+				oHide = document.querySelectorAll('.hide'),
+				oIcon = document.querySelectorAll('.list i'),
+				lastIndex = 0;
+			for(var i=0;i<oList.length;i++){
+				oList[i].index = i;//自定义属性
+				oList[i].isClick = false;
+				oList[i].initHeight = oHide[i].clientHeight;
+				oHide[i].style.height = '0';
+				oList[i].onclick = function () {
+					if(this.isClick){
+						oHide[this.index].style.height = '0';
+						oIcon[this.index].className = '';
+						oList[this.index].className = '';
+						oList[this.index].isClick = false;
+					}
+					else{
+						oHide[lastIndex].style.height = '0';
+						oIcon[lastIndex].className = '';
+						oList[lastIndex].className = '';
+						oHide[this.index].style.height = '110px';
+						oIcon[this.index].className = 'on';
+						oList[this.index].className = 'on';
+						oList[lastIndex].isClick = false;
+						oList[this.index].isClick = true;
+						lastIndex = this.index;
+					}
+				}
+			}
+		})();
+		</script>
+  
+</html>

@@ -1,0 +1,52 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/static/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <title>能力测试信息管理</title>
+</head>
+<body bgcolor="#F7F7F7">
+<!-- Table goes in the document BODY -->
+<h2 style="margin-left:40%;">能力测试一览</h2>
+<a href="/command/test/addtest" class='btn btn-primary' role='button'>添加能力测试</a>
+<br>
+<br>
+<div class="table-responsive">
+    <table class="table table-striped table-bordered table-hover">
+        <thead>
+            <tr class="active">
+                <td><strong>编号</strong></td>
+                <td><strong>测试部位名称</strong></td>
+                <td><strong>能力测试名称</strong></td>
+                <td><strong>测试描述</strong></td>
+                <td><strong>删除操作</strong></td>
+                <td><strong>编辑操作</strong></td>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for test in testinfo %}
+            <tr>
+                <td>{{test.0}}</td>
+                <td>{{test.1}}</td>
+                <td>{{test.2}}</td>
+                <td>{{test.3}}</td>
+                <td><a href="/command/{{ test.0 }}/delete" class="btn btn-danger" role="button" >删除</a></td>
+                <td><a href="/command/{{ test.0 }}/edit" class="btn btn-info" role="button" >编辑</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+</body>
+{% if messages %}
+        <script>
+            {% for msg in messages %}
+                alert('{{ msg.message }}');
+            {% endfor %}
+        </script>
+    {% endif %}
+</html>
